@@ -126,12 +126,14 @@ const Title = styled(motion.h1)`
   -webkit-text-fill-color: transparent;
   color: #00ff95; /* fallback */
   text-shadow: 0 0 30px rgba(0, 255, 149, 0.4);
+  opacity: 0; /* Let GSAP control the opacity */
 
   @media (max-width: 480px) {
     font-size: 2.2rem;
     line-height: 1.2;
   }
 `;
+
 
 
 const Subtitle = styled(motion.p)`
