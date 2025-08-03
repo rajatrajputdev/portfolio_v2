@@ -98,7 +98,7 @@ const BackgroundWrapper = styled.div`
   width: 100%;
   height: 100%;
   z-index: 0;
-  opacity: 1;
+  opacity: 0.8;
   canvas {
     width: 100% !important;
     height: 100% !important;
