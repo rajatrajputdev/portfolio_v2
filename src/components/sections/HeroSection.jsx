@@ -125,21 +125,31 @@ const Title = styled(motion.h1)`
   line-height: 1.1;
   opacity: 0;
   
-  /* Safari-safe approach: Use solid color by default */
+  /* Default: Always show solid color first */
   color: #00ff95;
   text-shadow: 0 0 30px rgba(0, 255, 149, 0.4);
   
-  /* Apply gradient only for browsers that fully support it */
-  @supports (background-clip: text) and (-webkit-background-clip: text) and (-webkit-text-fill-color: transparent) {
-    /* Only apply gradient on non-mobile devices */
-    @media (min-width: 769px) and (hover: hover) {
-      background: linear-gradient(45deg, #ffffff, #00ff95);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      /* Keep color as fallback in case gradient fails */
-      color: transparent;
+  /* Progressive enhancement: Add gradient for Chrome/Edge (including Android) */
+  @supports (background-clip: text) {
+    background: linear-gradient(45deg, #ffffff, #00ff95);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Ensure text is visible if gradient fails */
+    &::before {
+      content: attr(data-text);
+      position: absolute;
+      color: #00ff95;
+      z-index: -1;
     }
+  }
+  
+  /* Safari-specific override - force solid color */
+  @supports (-webkit-hyphens: none) {
+    background: none !important;
+    -webkit-text-fill-color: #00ff95 !important;
+    color: #00ff95 !important;
   }
 
   @media (max-width: 480px) {
@@ -395,7 +405,7 @@ export default function HeroSection() {
       
         <Content>
           <motion.div>
-            <Title ref={titleRef}>
+            <Title ref={titleRef} data-text={`Hey, I'm ${personalData.name}`}>
               Hey, I'm {personalData.name}
             </Title>
             
