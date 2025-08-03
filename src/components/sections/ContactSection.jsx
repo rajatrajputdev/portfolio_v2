@@ -70,34 +70,49 @@ const SubTitle = styled.p`
   font-size: 1.1rem;
   line-height: 1.6;
 `;
+const MadeWithLove = styled.p`
+  margin-top: 3rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  text-align: center;
+
+  span {
+    color: var(--accent);
+    font-size: 1.2rem;
+  }
+`;
 
 export default function ContactSection() {
-  return (
-    <ContactContainer id="contact">
-      <SectionTitle>Get In Touch</SectionTitle>
-      <SubTitle>
-        Feel free to reach out for collaborations or just a friendly hello
-      </SubTitle>
-      <ContactLinksContainer>
-        <ContactLink 
-          href={portfolioData.personal.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ y: -5 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <FaLinkedin />
-          LinkedIn
-        </ContactLink>
-        <ContactLink 
-          href={`mailto:${portfolioData.personal.email}`}
-          whileHover={{ y: -5 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <FaEnvelope />
-          Email Me
-        </ContactLink>
-      </ContactLinksContainer>
-    </ContactContainer>
-  );
+return (
+  <ContactContainer id="contact">
+    <SectionTitle>Get In Touch</SectionTitle>
+    <SubTitle>
+      Feel free to reach out for collaborations or just a friendly hello
+    </SubTitle>
+    <ContactLinksContainer>
+      <ContactLink 
+        href={portfolioData.personal.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        whileHover={{ y: -5 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <FaLinkedin />
+        LinkedIn
+      </ContactLink>
+      <ContactLink 
+        href={`mailto:${portfolioData.personal.email}`}
+        whileHover={{ y: -5 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <FaEnvelope />
+        Email Me
+      </ContactLink>
+    </ContactLinksContainer>
+    <MadeWithLove>
+      Made with <span>❤️</span> by Rajat Rajput
+    </MadeWithLove>
+  </ContactContainer>
+);
+
 }
