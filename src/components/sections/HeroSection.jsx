@@ -124,37 +124,108 @@ const Title = styled(motion.h1)`
   margin-bottom: 1rem;
   line-height: 1.1;
   opacity: 0;
+  position: relative;
   
-  /* Default: Always show solid color first */
+  /* Always show solid color as base - this ensures text is ALWAYS visible */
   color: #00ff95;
   text-shadow: 0 0 30px rgba(0, 255, 149, 0.4);
   
-  /* Progressive enhancement: Add gradient for Chrome/Edge (including Android) */
-  @supports (background-clip: text) {
-    background: linear-gradient(45deg, #ffffff, #00ff95);
-    background-clip: text;
+  /* Try to apply gradient as enhancement, but with multiple fallback layers */
+  background: linear-gradient(45deg, #ffffff 0%, #00ff95 100%);
+  background-size: 100% 100%;
+  
+  /* Modern browsers gradient text */
+  @supports (background-clip: text) or (-webkit-background-clip: text) {
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background-clip: text;
     
-    /* Ensure text is visible if gradient fails */
-    &::before {
-      content: attr(data-text);
-      position: absolute;
-      color: #00ff95;
-      z-index: -1;
+    /* Only make text transparent if we're confident gradient will work */
+    @media (min-width: 0px) {
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      
+      /* Backup color in case transparent fails */
+      &::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: #00ff95;
+        background: none;
+        -webkit-text-fill-color: #00ff95;
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.1s;
+      }
+      
+      /* Show backup if main text becomes invisible */
+      &:not([style*="color: transparent"]) {
+        &::after {
+          opacity: 1;
+        }
+      }
     }
   }
   
-  /* Safari-specific override - force solid color */
-  @supports (-webkit-hyphens: none) {
+  /* Force solid color for older browsers and problematic cases */
+  @supports not (background-clip: text) and not (-webkit-background-clip: text) {
     background: none !important;
-    -webkit-text-fill-color: #00ff95 !important;
     color: #00ff95 !important;
+    -webkit-text-fill-color: #00ff95 !important;
+  }
+  
+  /* Additional safety nets for specific browsers */
+  
+  /* Internet Explorer / Edge Legacy */
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    background: none !important;
+    color: #00ff95 !important;
+  }
+  
+  /* Firefox fallback */
+  @-moz-document url-prefix() {
+    background: none;
+    color: #00ff95;
+  }
+  
+  /* Safari specific - more reliable detection */
+  @media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) {
+      background: none !important;
+      color: #00ff95 !important;
+      -webkit-text-fill-color: #00ff95 !important;
+    }
+  }
+  
+  /* Mobile Safari specific */
+  @supports (-webkit-touch-callout: none) and (not (translate: none)) {
+    background: none !important;
+    color: #00ff95 !important;
+    -webkit-text-fill-color: #00ff95 !important;
+  }
+  
+  /* Low resolution displays fallback */
+  @media (max-resolution: 150dpi) {
+    background: none;
+    color: #00ff95;
+    -webkit-text-fill-color: #00ff95;
   }
 
   @media (max-width: 480px) {
     font-size: 2.2rem;
     line-height: 1.2;
+    
+    /* Extra safety for mobile */
+    background: none !important;
+    color: #00ff95 !important;
+    -webkit-text-fill-color: #00ff95 !important;
+  }
+  
+  @media (max-width: 768px) {
+    /* Tablet safety */
+    background: none !important;
+    color: #00ff95 !important;
+    -webkit-text-fill-color: #00ff95 !important;
   }
 `;
 
