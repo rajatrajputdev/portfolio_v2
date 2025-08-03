@@ -4,7 +4,7 @@ const GlobalStyles = createGlobalStyle`
   :root {
     --dark-bg: #0a0a0a;
     --darker-bg: #050505;
-    --accent: #ffffffff;
+    --accent: #00ff95;
     --text-primary: #00ff95;
     --text-secondary: #858585;
     --transition: all 0.3s ease-in-out;

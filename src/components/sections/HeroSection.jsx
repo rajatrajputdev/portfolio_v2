@@ -130,7 +130,6 @@ const Title = styled(motion.h1)`
   @media (max-width: 480px) {
     font-size: 2.2rem;
     line-height: 1.2;
-    text-shadow: none;
   }
 `;
 
