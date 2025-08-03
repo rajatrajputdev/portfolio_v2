@@ -121,14 +121,19 @@ const Title = styled(motion.h1)`
   font-weight: 700;
   margin-bottom: 1rem;
   line-height: 1.1;
-  @media (max-width: 480px) {
-    font-size: clamp(2rem, 7vw, 2.5rem);
-  }
   background: linear-gradient(45deg, #ffffff, #00ff95);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: #00ff95; /* fallback */
   text-shadow: 0 0 30px rgba(0, 255, 149, 0.4);
+
+  @media (max-width: 480px) {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    text-shadow: none;
+  }
 `;
+
 
 const Subtitle = styled(motion.p)`
   font-size: clamp(1rem, 3vw, 1.5rem);
