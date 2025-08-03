@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import portfolioData from '../../config';
 
 const ProjectsContainer = styled.section`
   min-height: 100vh;
@@ -146,32 +147,7 @@ const ProjectImage = styled.img`
   }
 `;
 
-const projects = [
-  {
-    title: "Linux System Monitor",
-    description: "Real-time system monitoring dashboard for Linux distributions with process management capabilities. Features interactive charts and process control.",
-    tech: ["Rust", "WebAssembly", "System APIs", "Charts.js"],
-    image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80",
-    demo: "https://example.com/demo",
-    github: "https://github.com/yourusername/project",
-  },
-  {
-    title: "AI Code Assistant",
-    description: "VS Code extension that provides intelligent code suggestions using machine learning. Supports multiple programming languages and frameworks.",
-    tech: ["TypeScript", "Python", "TensorFlow", "VS Code API"],
-    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80",
-    demo: "https://example.com/demo",
-    github: "https://github.com/yourusername/project",
-  },
-  {
-    title: "Blockchain Explorer",
-    description: "Web application for exploring and analyzing blockchain transactions and smart contracts. Features real-time updates and interactive visualizations.",
-    tech: ["React", "Node.js", "Web3.js", "D3.js"],
-    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80",
-    demo: "https://example.com/demo",
-    github: "https://github.com/yourusername/project",
-  },
-];
+const projects = portfolioData.projects;
 
 export default function ProjectsSection() {
   return (

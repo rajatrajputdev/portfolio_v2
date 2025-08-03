@@ -355,80 +355,80 @@ export default function HeroSection() {
 
   useLayoutEffect(() => {
     let tl;
-    
+
     if (!loading) {
       gsap.registerPlugin(ScrollTrigger, TextPlugin, SplitText);
-      
+
       // Split text animation for title
       const titleSplit = new SplitText(titleRef.current, { type: "chars, words" });
       const subtitleSplit = new SplitText(subtitleRef.current, { type: "chars" });
-      
+
       tl = gsap.timeline();
-      
+
       // Initial container fade in
       tl.from(containerRef.current, {
         opacity: 0,
         duration: 0.5
       })
-      
-      // Make title and subtitle visible before animating
-      .set([titleRef.current, subtitleRef.current, terminalRef.current], {
-        opacity: 1
-      })
-      
-      // Animate title characters
-      .from(titleSplit.chars, {
-        opacity: 0,
-        y: 50,
-        rotateX: -90,
-        stagger: 0.02,
-        duration: 0.8,
-        ease: "back.out(1.7)"
-      })
-      
-      // Animate subtitle characters
-      .from(subtitleSplit.chars, {
-        opacity: 0,
-        x: -20,
-        stagger: 0.02,
-        duration: 0.4,
-        ease: "power2.out"
-      }, "-=0.3")
-      
-      // Terminal typing effect
-      .to(terminalRef.current.querySelector(".command-1"), {
-        duration: 1,
-        text: "profile --summary",
-        ease: "none",
-      })
-      .to(terminalRef.current.querySelector(".response-1"), {
-        duration: 0.1,
-        opacity: 1,
-      })
-      .to(terminalRef.current.querySelector(".command-2"), {
-        duration: 1,
-        text: "profile --skills",
-        ease: "none",
-      }, "+=1.5")
-      .to(terminalRef.current.querySelector(".response-2"), {
-        duration: 0.1,
-        opacity: 1,
-      })
-      .to(terminalRef.current.querySelector(".command-3"), {
-        duration: 1,
-        text: "profile --focus",
-        ease: "none",
-      }, "+=2")
-      .to(terminalRef.current.querySelector(".response-3"), {
-        duration: 0.1,
-        opacity: 1,
-      })
-      
-      // Finally show buttons
-      .to(document.querySelector('.button-container'), {
-        opacity: 1,
-        duration: 0.5
-      });
+
+        // Make title and subtitle visible before animating
+        .set([titleRef.current, subtitleRef.current, terminalRef.current], {
+          opacity: 1
+        })
+
+        // Animate title characters
+        .from(titleSplit.chars, {
+          opacity: 0,
+          y: 50,
+          rotateX: -90,
+          stagger: 0.02,
+          duration: 0.8,
+          ease: "back.out(1.7)"
+        })
+
+        // Animate subtitle characters
+        .from(subtitleSplit.chars, {
+          opacity: 0,
+          x: -20,
+          stagger: 0.02,
+          duration: 0.4,
+          ease: "power2.out"
+        }, "-=0.3")
+
+        // Terminal typing effect
+        .to(terminalRef.current.querySelector(".command-1"), {
+          duration: 1,
+          text: "profile --summary",
+          ease: "none",
+        })
+        .to(terminalRef.current.querySelector(".response-1"), {
+          duration: 0.1,
+          opacity: 1,
+        })
+        .to(terminalRef.current.querySelector(".command-2"), {
+          duration: 1,
+          text: "profile --skills",
+          ease: "none",
+        }, "+=1.5")
+        .to(terminalRef.current.querySelector(".response-2"), {
+          duration: 0.1,
+          opacity: 1,
+        })
+        .to(terminalRef.current.querySelector(".command-3"), {
+          duration: 1,
+          text: "profile --focus",
+          ease: "none",
+        }, "+=2")
+        .to(terminalRef.current.querySelector(".response-3"), {
+          duration: 0.1,
+          opacity: 1,
+        })
+
+        // Finally show buttons
+        .to(document.querySelector('.button-container'), {
+          opacity: 1,
+          duration: 0.5
+        });
     }
 
     return () => {
@@ -468,18 +468,17 @@ export default function HeroSection() {
           </LoadingContainer>
         )}
       </AnimatePresence>
-      
+
       <HeroContainer ref={containerRef}>
         <BackgroundWrapper>
           <ParticleField />
         </BackgroundWrapper>
-      
+
         <Content>
           <motion.div>
-            <Title ref={titleRef} data-text={`Hey, I'm ${personalData.name}`}>
-              Hey, I'm {personalData.name}
-            </Title>
-            
+            <Title ref={titleRef}>Hey, I'm {personalData.name}</Title>
+
+
             <Subtitle ref={subtitleRef}>
               {personalData.title}
             </Subtitle>
@@ -492,18 +491,14 @@ export default function HeroSection() {
             </Response>
             <Command className="command-2"></Command>
             <Response className="response-2" style={{ opacity: 0 }}>
-Technical proficiencies:
-
-Frontend: {skillsData.frontend.join(', ')}
-Backend: {skillsData.backend.join(', ')}
-DevOps: {skillsData.devops.join(', ')}
-Architecture: {skillsData.architecture.join(', ')}
+              Frontend : {skillsData.frontend.join(', ')}<br></br>
+              Backend : {skillsData.backend.join(', ')}<br></br>
+              DevOps : {skillsData.devops.join(', ')}<br></br>
+              Architecture : {skillsData.architecture.join(', ')}<br></br>
             </Response>
             <Command className="command-3"></Command>
             <Response className="response-3" style={{ opacity: 0 }}>
-Currently focused on:
-
-{focusData.join('\n')}
+              Currently focused on : {focusData.join(', ')}
             </Response>
           </TerminalWrapper>
 

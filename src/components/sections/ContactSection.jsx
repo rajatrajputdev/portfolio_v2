@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaLinkedin, FaEnvelope } from 'react-icons/fa';
-
+import portfolioData from '../../config/portfolio.json'; // Adjust the import path as necessary
 const ContactContainer = styled.section`
   min-height: 50vh;
   padding: 100px 20px;
@@ -80,7 +80,7 @@ export default function ContactSection() {
       </SubTitle>
       <ContactLinksContainer>
         <ContactLink 
-          href="https://linkedin.com/in/rajat-rajput" 
+          href={portfolioData.personal.linkedin}
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ y: -5 }}
@@ -90,7 +90,7 @@ export default function ContactSection() {
           LinkedIn
         </ContactLink>
         <ContactLink 
-          href="mailto:your.email@example.com"
+          href={`mailto:${portfolioData.personal.email}`}
           whileHover={{ y: -5 }}
           whileTap={{ scale: 0.95 }}
         >

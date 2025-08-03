@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaTerminal } from 'react-icons/fa';
-
+import portfolioData from '../../config/portfolio.json'; // Adjust the import path as necessary
 const NavContainer = styled.nav`
   position: fixed;
   top: 0;
@@ -146,14 +146,14 @@ export default function Navigation() {
 
         <SocialLinks>
           <SocialLink 
-            href="https://github.com/yourusername" 
+            href={portfolioData.personal.github} 
             target="_blank"
             whileHover={{ scale: 1.1 }}
           >
             <FaGithub />
           </SocialLink>
           <SocialLink 
-            href="https://linkedin.com/in/yourusername" 
+            href={portfolioData.personal.linkedin}
             target="_blank"
             whileHover={{ scale: 1.1 }}
           >

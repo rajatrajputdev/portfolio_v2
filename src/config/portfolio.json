@@ -2,16 +2,18 @@
   "personal": {
     "name": "Rajat Rajput",
     "title": "Linux Enthusiast & Full-Stack Developer",
-    "email": "your.email@example.com",
-    "location": "Your Location",
-    "summary": "Full-Stack Developer with expertise in web application development and system architecture"
+    "email": "rajatrajputdev@gmail.com",
+    "location": "Delhi, India",
+    "summary": "Full-Stack Developer with expertise in web application development",
+    "linkedin": "https://linkedin.com/in/rajatrajputdev",
+    "github": "https://github.com/rajatrajputdev"
   },
 
   "social": {
-    "github": "https://github.com/yourusername",
-    "linkedin": "https://linkedin.com/in/yourusername",
-    "twitter": "https://twitter.com/yourusername",
-    "portfolio": "https://yourwebsite.com"
+    "github": "https://github.com/rajatrajputdev",
+    "linkedin": "https://linkedin.com/in/rajatrajputdev",
+    "twitter": "https://twitter.com/rajatrajputdev",
+    "portfolio": "https://rajatrajput.dev"
   },
 
   "skills": {
@@ -22,26 +24,9 @@
       "Next.js",
       "Responsive Design"
     ],
-    "backend": [
-      "Node.js",
-      "Express",
-      "RESTful APIs",
-      "GraphQL",
-      "MongoDB"
-    ],
-    "devops": [
-      "Linux",
-      "Docker",
-      "CI/CD",
-      "AWS",
-      "Git"
-    ],
-    "architecture": [
-      "System Design",
-      "Performance Optimization",
-      "Microservices",
-      "Cloud Architecture"
-    ]
+    "backend": ["Node.js", "Express", "RESTful APIs", "GraphQL", "MongoDB"],
+    "devops": ["Linux", "Azure", "CI/CD", "AWS", "Git"],
+    "architecture": ["Microservices"]
   },
 
   "focus": [
@@ -52,26 +37,70 @@
 
   "experience": [
     {
-      "title": "Senior Full Stack Developer",
-      "company": "Company Name",
-      "location": "Location",
-      "period": "2023 - Present",
-      "description": "Lead development of enterprise applications and system architecture",
-      "technologies": ["React", "Node.js", "AWS", "Docker"]
+      "year": "2025",
+      "company": "Essentia.dev",
+      "role": "Software Development Intern",
+      "duration": "May 2025 - July 2025",
+      "description": " Refactored a large Elixir codebase into a modular umbrella architecture, enabling scalable and maintainable development through strict boundaries, shared libraries, and independent sub-app deployment.",
+      "highlights": [
+        "Adopted context-driven modularization with isolated sub-apps for clean separation of concerns.",
+        "Centralized shared logic into libraries for consistent reuse and dependency management.",
+        "Enabled parallel team workflows and horizontal scaling through unified hosting and testing layers."
+      ]
+    },
+    {
+      "year": "2024",
+      "company": "Arexa",
+      "role": "Fullstack Engineer",
+      "duration": "April 2024 - August 2024",
+      "description": "Part of the development team building and optimizing websites from front-end to back-end, fostering a collaborative and growth-oriented development environment to craft exceptional user experiences.Part of the development team building and optimizing websites from front-end to back-end, fostering a collaborative and growth-oriented development environment to craft exceptional user experiences.",
+      "highlights": [
+        "Contributed to full-stack development, ensuring seamless integration between front-end and back-end.",
+        "Fostered a collaborative team environment focused on shared learning and growth.",
+        "Optimized website performance to deliver smooth and engaging user experiences."
+      ]
+    },
+    {
+      "year": "2024",
+      "company": "Mishka Technologies",
+      "role": "Software Development Intern",
+      "duration": "January 2024 - March 2024",
+      "description": "Implemented automation solutions that reduced 30+ hours of weekly manual work. Built a robust email server handling 100+ emails daily and optimized the company’s database for integrity and availability.",
+      "highlights": [
+        "Automated technical operations, saving 30+ hours of manual effort per week.",
+        "Built and maintained a scalable email server infrastructure handling 100+ daily emails.",
+        "Ensured data integrity and availability through proactive database optimization."
+      ]
     }
   ],
 
   "projects": [
     {
-      "title": "Project Name",
-      "description": "A brief description of the project",
-      "technologies": ["React", "Node.js", "MongoDB"],
-      "github": "https://github.com/yourusername/project",
-      "live": "https://project-demo.com",
-      "image": "/images/project1.png"
-    }
-  ],
+      "title": "SmartFace Detector",
+      "description": "A real-time face detection web application using TensorFlow.js. Runs entirely in the browser with no server-side dependency and provides instant face bounding box visualization using webcam feed.",
+      "tech": ["OpenCV", "YOLO", "Python", "C", "Arduino UNO", "ResNet-18"],
+      "image": "https://raw.githubusercontent.com/rajatrajputdev/smartface-detector/refs/heads/main/demonstration/circuit.png",
+      "demo": "https://www.linkedin.com/posts/rajatrajputdev_facerecognition-yolov3-resnet18-activity-7301668925145026561-FBsd?utm_source=share&utm_medium=member_desktop&rcm=ACoAADxA7qkBIIUMl0WKT64OLHQ9_jxWPIs_pc4",
+      "github": "https://github.com/rajatrajputdev/smartface-detector"
+    },
+    {
+      "title": "Object Detector Notifier",
+      "description": " An Arduino-based object detection and notification system, integrated with Python for storing data in Azure SQL.",
+      "tech": ["Arduino UNO", "C", "Python", "Azure SQL", "smtplib"],
+      "image": "https://raw.githubusercontent.com/rajatrajputdev/object-detector-notifier/refs/heads/main/demonstration/demonst1.jpg",
+      "demo": "https://www.linkedin.com/posts/rajatrajputdev_iot-arduino-azure-activity-7296946533768302592-25Ur?utm_source=share&utm_medium=member_desktop&rcm=ACoAADxA7qkBIIUMl0WKT64OLHQ9_jxWPIs_pc4",
+      "github": "https://github.com/rajatrajputdev/object-detector-notifier"
+    },
+    {
+  "title": "Redirect Mechanism",
+  "description": "A minimal and customizable HTML+JS-based redirect system designed for hosting simple redirection pages with delay, progress indication, and optional fallback messaging.",
+  "tech": ["HTML", "JavaScript", "CSS"],
+  "image": "https://raw.githubusercontent.com/rajatrajputdev/redirect-mechanism/refs/heads/main/demo.png",
+  "demo": "https://rajatrajputdev.github.io/redirect-mechanism/",
+  "github": "https://github.com/rajatrajputdev/redirect-mechanism"
+}
 
+  ],
   "education": [
     {
       "degree": "Your Degree",

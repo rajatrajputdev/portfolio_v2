@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import portfolioData from '../../config/portfolio.json';
 
 const ExperienceContainer = styled.section`
   min-height: 100vh;
@@ -157,44 +158,7 @@ const SectionTitle = styled.h2`
   }
 `;
 
-const experiences = [
-  {
-    year: "2024",
-    company: "Tech Innovations Inc.",
-    role: "Senior Full Stack Developer",
-    duration: "Jan 2024 - Present",
-    description: "Led development of cloud-native applications using microservices architecture. Implemented CI/CD pipelines and mentored junior developers.",
-    highlights: [
-      "Architected and deployed microservices using Docker and Kubernetes",
-      "Improved system performance by 40% through optimization",
-      "Mentored team of 5 junior developers"
-    ]
-  },
-  {
-    year: "2023",
-    company: "DataViz Solutions",
-    role: "Software Engineer",
-    duration: "Mar 2023 - Dec 2023",
-    description: "Developed data visualization tools and real-time analytics dashboards. Optimized database queries and implemented caching solutions.",
-    highlights: [
-      "Built real-time data visualization dashboard",
-      "Reduced query response time by 60%",
-      "Implemented Redis caching layer"
-    ]
-  },
-  {
-    year: "2022",
-    company: "StartupX",
-    role: "Frontend Developer",
-    duration: "Jun 2022 - Feb 2023",
-    description: "Built responsive web applications using React and Next.js. Implemented state management solutions and optimized application performance.",
-    highlights: [
-      "Developed responsive UI components library",
-      "Improved load time by 50%",
-      "Implemented CI/CD pipeline"
-    ]
-  }
-];
+const experiences = portfolioData.experience;
 
 export default function ExperienceSection() {
   const containerRef = useRef(null);
