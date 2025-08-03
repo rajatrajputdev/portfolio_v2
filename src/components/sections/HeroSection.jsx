@@ -88,6 +88,7 @@ const HeroContainer = styled.section`
   
   @media (max-width: 768px) {
     padding-top: calc(70px + 1.5rem);
+  }
 `;
 
 const BackgroundWrapper = styled.div`
@@ -114,6 +115,7 @@ const Content = styled.div`
   
   @media (max-width: 480px) {
     padding: 0 16px;
+  }
 `;
 
 const Title = styled(motion.h1)`
@@ -121,12 +123,24 @@ const Title = styled(motion.h1)`
   font-weight: 700;
   margin-bottom: 1rem;
   line-height: 1.1;
-  background: linear-gradient(45deg, #ffffff, #00ff95);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: #00ff95; /* fallback */
+  opacity: 0;
+  
+  /* Safari-safe approach: Use solid color by default */
+  color: #00ff95;
   text-shadow: 0 0 30px rgba(0, 255, 149, 0.4);
-  opacity: 0; /* Let GSAP control the opacity */
+  
+  /* Apply gradient only for browsers that fully support it */
+  @supports (background-clip: text) and (-webkit-background-clip: text) and (-webkit-text-fill-color: transparent) {
+    /* Only apply gradient on non-mobile devices */
+    @media (min-width: 769px) and (hover: hover) {
+      background: linear-gradient(45deg, #ffffff, #00ff95);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      /* Keep color as fallback in case gradient fails */
+      color: transparent;
+    }
+  }
 
   @media (max-width: 480px) {
     font-size: 2.2rem;
@@ -134,13 +148,12 @@ const Title = styled(motion.h1)`
   }
 `;
 
-
-
 const Subtitle = styled(motion.p)`
   font-size: clamp(1rem, 3vw, 1.5rem);
   color: #b4ecce;
   margin-bottom: 3rem;
   text-shadow: 0 0 10px rgba(0, 255, 149, 0.2);
+  opacity: 0; /* CHANGED: Use opacity instead of visibility */
 `;
 
 const TerminalWrapper = styled.div`
@@ -157,6 +170,7 @@ const TerminalWrapper = styled.div`
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
+  opacity: 0; /* CHANGED: Use opacity instead of visibility */
 `;
 
 const Command = styled.div`
@@ -185,6 +199,8 @@ const ButtonContainer = styled.div`
   gap: 1rem;
   justify-content: center;
   margin-top: 1.5rem;
+  opacity: 0; /* CHANGED: Use opacity instead of visibility */
+  
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
@@ -274,6 +290,11 @@ export default function HeroSection() {
         duration: 0.5
       })
       
+      // Make title and subtitle visible before animating
+      .set([titleRef.current, subtitleRef.current, terminalRef.current], {
+        opacity: 1
+      })
+      
       // Animate title characters
       .from(titleSplit.chars, {
         opacity: 0,
@@ -320,6 +341,12 @@ export default function HeroSection() {
       .to(terminalRef.current.querySelector(".response-3"), {
         duration: 0.1,
         opacity: 1,
+      })
+      
+      // Finally show buttons
+      .to(document.querySelector('.button-container'), {
+        opacity: 1,
+        duration: 0.5
       });
     }
 
@@ -368,68 +395,68 @@ export default function HeroSection() {
       
         <Content>
           <motion.div>
-            <Title ref={titleRef} style={{ opacity: loading ? 0 : 1 }}>
+            <Title ref={titleRef}>
               Hey, I'm {personalData.name}
             </Title>
             
-            <Subtitle ref={subtitleRef} style={{ opacity: loading ? 0 : 1 }}>
+            <Subtitle ref={subtitleRef}>
               {personalData.title}
             </Subtitle>
           </motion.div>
 
-          <TerminalWrapper ref={terminalRef} style={{ opacity: loading ? 0 : 1 }}>
-          <Command className="command-1"></Command>
-          <Response className="response-1" style={{ opacity: 0 }}>
-            {personalData.summary}
-          </Response>
-          <Command className="command-2"></Command>
-          <Response className="response-2" style={{ opacity: 0 }}>
+          <TerminalWrapper ref={terminalRef}>
+            <Command className="command-1"></Command>
+            <Response className="response-1" style={{ opacity: 0 }}>
+              {personalData.summary}
+            </Response>
+            <Command className="command-2"></Command>
+            <Response className="response-2" style={{ opacity: 0 }}>
 Technical proficiencies:
 
 Frontend: {skillsData.frontend.join(', ')}
 Backend: {skillsData.backend.join(', ')}
 DevOps: {skillsData.devops.join(', ')}
 Architecture: {skillsData.architecture.join(', ')}
-          </Response>
-          <Command className="command-3"></Command>
-          <Response className="response-3" style={{ opacity: 0 }}>
+            </Response>
+            <Command className="command-3"></Command>
+            <Response className="response-3" style={{ opacity: 0 }}>
 Currently focused on:
 
 {focusData.join('\n')}
-          </Response>
-        </TerminalWrapper>
+            </Response>
+          </TerminalWrapper>
 
-        <ButtonContainer style={{ opacity: loading ? 0 : 1 }}>
-          <ActionButton
-            onClick={() => {
-              const projectsSection = document.querySelector('#projects');
-              projectsSection?.scrollIntoView({ behavior: 'smooth' });
-            }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.2 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            View Projects <span>→</span>
-          </ActionButton>
-          <ActionButton
-            variant="outlined"
-            onClick={() => {
-              const contactSection = document.querySelector('#contact');
-              contactSection?.scrollIntoView({ behavior: 'smooth' });
-            }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.4 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Contact Me <span>→</span>
-          </ActionButton>
-        </ButtonContainer>
-      </Content>
-    </HeroContainer>
+          <ButtonContainer className="button-container">
+            <ActionButton
+              onClick={() => {
+                const projectsSection = document.querySelector('#projects');
+                projectsSection?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: loading ? 0 : 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 1.2 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              View Projects <span>→</span>
+            </ActionButton>
+            <ActionButton
+              variant="outlined"
+              onClick={() => {
+                const contactSection = document.querySelector('#contact');
+                contactSection?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: loading ? 0 : 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 1.4 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Contact Me <span>→</span>
+            </ActionButton>
+          </ButtonContainer>
+        </Content>
+      </HeroContainer>
     </motion.div>
   );
 }
