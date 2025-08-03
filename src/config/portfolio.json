@@ -1,0 +1,101 @@
+{
+  "personal": {
+    "name": "Rajat Rajput",
+    "title": "Linux Enthusiast & Full-Stack Developer",
+    "email": "your.email@example.com",
+    "location": "Your Location",
+    "summary": "Full-Stack Developer with expertise in web application development and system architecture"
+  },
+
+  "social": {
+    "github": "https://github.com/yourusername",
+    "linkedin": "https://linkedin.com/in/yourusername",
+    "twitter": "https://twitter.com/yourusername",
+    "portfolio": "https://yourwebsite.com"
+  },
+
+  "skills": {
+    "frontend": [
+      "React.js",
+      "TypeScript",
+      "Modern CSS",
+      "Next.js",
+      "Responsive Design"
+    ],
+    "backend": [
+      "Node.js",
+      "Express",
+      "RESTful APIs",
+      "GraphQL",
+      "MongoDB"
+    ],
+    "devops": [
+      "Linux",
+      "Docker",
+      "CI/CD",
+      "AWS",
+      "Git"
+    ],
+    "architecture": [
+      "System Design",
+      "Performance Optimization",
+      "Microservices",
+      "Cloud Architecture"
+    ]
+  },
+
+  "focus": [
+    "Enterprise Web Applications",
+    "Scalable System Architecture",
+    "Performance Optimization"
+  ],
+
+  "experience": [
+    {
+      "title": "Senior Full Stack Developer",
+      "company": "Company Name",
+      "location": "Location",
+      "period": "2023 - Present",
+      "description": "Lead development of enterprise applications and system architecture",
+      "technologies": ["React", "Node.js", "AWS", "Docker"]
+    }
+  ],
+
+  "projects": [
+    {
+      "title": "Project Name",
+      "description": "A brief description of the project",
+      "technologies": ["React", "Node.js", "MongoDB"],
+      "github": "https://github.com/yourusername/project",
+      "live": "https://project-demo.com",
+      "image": "/images/project1.png"
+    }
+  ],
+
+  "education": [
+    {
+      "degree": "Your Degree",
+      "institution": "Institution Name",
+      "period": "Year - Year",
+      "location": "Location"
+    }
+  ],
+
+  "certifications": [
+    {
+      "name": "Certification Name",
+      "issuer": "Issuing Organization",
+      "date": "Year",
+      "link": "https://verification-link.com"
+    }
+  ],
+
+  "theme": {
+    "colors": {
+      "primary": "#00ff95",
+      "secondary": "#b4ecce",
+      "background": "#0a0a0a",
+      "text": "#ffffff"
+    }
+  }
+}
